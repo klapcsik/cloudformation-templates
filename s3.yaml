@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Simple S3 bucket
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  BasicParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "s3bucketname"
+      Type: "String"
+      Value: !Ref S3Bucket
+      Description: "SSM Parameter for S3 Bucket name."

@@ -1,0 +1,14 @@
+Description: Simple S3 bucket
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  BasicParameter:
+    Type: "AWS::SSM::Parameter"
+    Properties:
+      Name: "command"
+      Type: "String"
+      Value: !Ref S3Bucket
+      Description: "SSM Parameter for running date command."
